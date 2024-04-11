@@ -41,4 +41,34 @@ contract LISKNFT is ERC721URIStorage{
 
 
     }
+    //function to get all nfts in the market place
+
+    function getAllNFTS()public view returns(UserNFT[] memory nfts){
+
+        nfts = new UserNFT[](tokenCount);
+        for(uint i = 0; i < tokenCount; i++) { //gas fee save ++i
+            nfts[i] = usernfts[i];
+        }
+        return nfts;
+
+    }
+
+    function getAllUserNFTS(address _user)public  view returns(UserNFT[] memory nfts){
+        uint256 count=0;
+        for(uint256 i=0;i <tokenCount;i++){
+            if(usernfts[i].userAddress == _user){
+                count ++;
+            }
+        }
+        nfts = new UserNFT[](count);
+        uint256 index=0;
+        for(uint256 i =0;i < tokenCount;i++){
+            if(usernfts[i].userAddress == _user){
+                nfts[index]= usernfts[i];
+                index ++;
+            }
+
+        }
+        return nfts;
+    }
 }
