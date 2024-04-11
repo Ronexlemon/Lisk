@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.2;
+pragma solidity ^0.8.13;
 
 
 import "openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
@@ -11,7 +11,7 @@ contract LISKNFT is ERC721URIStorage{
 
     //struct to save user nfts
 
-    struct UserNFT{
+     struct  UserNFT{
         uint256 tokenId;
         address userAddress;
         uint256  listPrice;
@@ -19,7 +19,7 @@ contract LISKNFT is ERC721URIStorage{
         bool   isSold;
 
     }
-
+  UserNFT[] public _userNft;
     //mapping to save user nFTs
 
     mapping(uint => UserNFT)public usernfts;
